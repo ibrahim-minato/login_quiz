@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -- coding: utf-8
 
+'''
+this program uses flask to create a login page, registration page and saves it in infor.txt file
+if you login there is a quiz page and after answers the questions it take you to a new page to show you result
+'''
+
 from flask import Flask,render_template,request,redirect,url_for
 import os
 
