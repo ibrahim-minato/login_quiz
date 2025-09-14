@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('bell.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .result {
+            background-color: rgb(24, 184, 162);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white;
+            width: 300px;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result">
+        <h1>Quiz Result</h1>
+        <p>Your Score: <strong>{{ score }}</strong> out of <strong>{{ total }}</strong></p>
+        {% if score == total %}
+            <p>🎉 Excellent! Perfect score!</p>
+        {% elif score >= total / 2 %}
+            <p>👍 Good job!</p>
+        {% else %}
+            <p>📚 Keep studying!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

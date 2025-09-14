@@ -1,0 +1,92 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login-frame{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10 px
+    rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+.login-frame h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.login-frame input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.login-frame button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-frame button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+from flask import Flask, render_template,request,redirect, url_for,flash
+from cerberus import Validator
+
+app = Flask(__name__)
+app.secret_key = 'yoursecretkey'
+
+USERNAME = 'madara'
+PASSWORD = 'pass'
+
+schema = {
+    'username': {'type':'string','minlength':3,'maxlength':30,'required':True},
+    'password': {'type':'string','minlength':6,'required':True}
+}
+
+
+@app.route('/')
+def home():
+    return render_template('login.html')
+
+@app.route("/login", methods=['POST'])
+def login():
+    v = Validator(schema)
+
+    data ={
+        'username':
+        request.form.get('username'),
+        'password':
+        request.form.get('password')
+    }
+    if not v.validate(data):
+        for field, errors in v.errors.items():
+            for error in errors:
+                flash(f'{field}:{error}')
+        return redirect(url_for('home'))
+
+    username = request.form['username']
+    password = request.form['password']
+    if USERNAME == username and PASSWORD == password:
+        return redirect(url_for('success'))
+    else:
+        flash("Invalid username or password")
+        return redirect(url_for('home'))
+    
+@app.route('/success')
+def success():
+    return "Login sucessfully! Welcome!"
+
+if __name__=="__main__":
+    app.run(debug=True)

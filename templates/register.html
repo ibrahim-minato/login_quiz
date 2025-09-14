@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+       <style>
+        body{        
+    font-family: Arial, sans-serif;
+    background: url(bell.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.register-frame{
+    background-color: rgb(24, 184, 162);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+.register-frame h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.register-frame input {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.register-frame button {
+    width: 90%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.register-frame button:hover {
+    background-color: #00b31e;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="register-frame">
+        <h2>CREATE NEW ACCOUNT</h2>
+    <form action="/register" method="post">
+        <input type="text" name="username" placeholder="username" required><br><br>
+        <input type="email" name="email" placeholder="email" required>
+        <div style="position: relative; width: 100%; margin: 0 auto 15px auto;">
+            <input type="password" name="password" placeholder="password" id="myPassword" style="width: 90%; padding-right: 30px;">
+            <button type="button" onclick="showHide()" 
+                style="position: absolute; right: -150px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #007bff; font-size: 1.2em;">
+                👁️‍🗨️
+            </button>
+        </div>
+        <button type="submit">Create account</button>
+    </form>
+    <script>
+        function showHide() {
+            let passwordField = document.getElementById("myPassword");
+            if (passwordField.type == "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+    
+</body>
+</html>
