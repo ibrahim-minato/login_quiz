@@ -1,1 +1,3 @@
-minato,pass,minatonamikaze@gmail.com
+minato,pbkdf2:sha256:1000000$Zldh97ycFg46LJRL$70281e8ac487e370cb299de7b95f90c44aa3f0de3e3b52c92f37a55da4d510fb,mubariksibriibrahim@gmail.com
+
+
